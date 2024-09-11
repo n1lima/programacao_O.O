@@ -11,7 +11,7 @@ class Carro:
         self.velocidade_atual = velocidade_atual
 
     def acelerar (self, incrementando):
-        self.velocidade_atual += incrementando
+        self.velocidade_atual += incrementando #aqui apenas a váriavel atual está sendo mudada o valor
 
     def frear (self, decrementando):
         self.velocidade_atual -= decrementando
