@@ -37,7 +37,7 @@ class Animal:
     
 class Mamifero (Animal):
     def __init__(self, nome, idade, especie, tipoDePelo):
-        super().__init__(nome, idade, especie)#recebendo os atributos da Classe Pai -> Animal
+        super().__init__(nome, idade, especie)#recebendo os atributos da Classe Pai <- Animal
         self._tipoDePelo  = tipoDePelo 
 
     #leitura dos atributos privado
@@ -49,7 +49,7 @@ class Mamifero (Animal):
         self._tipoDePelo = tipoDePelo
 
     def __str__(self):
-        info = super().__str__()#recebendo o 'print()' da Classe Pai -> Animal
+        info = super().__str__()#recebendo o 'print()' da Classe Pai <- Animal
         info += f'\ntipo de Pelo: {self.get_tipoDePelo()}'
         return info 
     
