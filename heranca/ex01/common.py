@@ -35,6 +35,11 @@ class Animal:
                f'E sua especie: {self.get_especie()}')
         return info
     
+    def __repr__(self):
+        return (f'Nome do animal({self.get_nome()}),\n'
+                f'Idada({self.get_idade()}),\n'
+                f'especie({self.get_especie()})')
+    
 class Mamifero (Animal):
     def __init__(self, nome, idade, especie, tipoDePelo):
         super().__init__(nome, idade, especie)#recebendo os atributos da Classe Pai <- Animal
@@ -53,6 +58,9 @@ class Mamifero (Animal):
         info += f'\ntipo de Pelo: {self.get_tipoDePelo()}'
         return info 
     
+    def __repr__(self):
+        return f'Animal({super().__repr__()}), Tipo de pelo({self.get_tipoDePelo()})'
+    
 class Ave (Animal):
     def __init__(self, nome, idade, especie, tipoDeNinho):
         super().__init__(nome, idade, especie)
@@ -68,6 +76,9 @@ class Ave (Animal):
         info = super().__str__()
         info += f'\ntipo de ninho: {self.get_tipoDeNinho()}'
         return info
+
+    def __repr__(self):
+        return f"Animal({super().__repr__()}, Tipo de ninho='{self._tipoDeNinho}')"
 
 
         
