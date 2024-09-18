@@ -8,6 +8,8 @@ produto3.add_item(item)
 
 pedido = Pedido(1)
 pedido.adicionando_produto(produto1)
+pedido = Pedido(2)
+pedido.adicionando_produto(produto2)
 
 print(pedido)
 print(produto2)
