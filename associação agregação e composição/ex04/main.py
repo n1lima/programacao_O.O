@@ -9,11 +9,13 @@ Regras:
 """
 from common import *
 
+capitulo = Capitulo(10, 'array')
 livro1 = Livro("Python para Iniciantes")
 leitor1 = Leitor("João")
+livro1.add_capitulos(capitulo)
+
 
 biblioteca = Biblioteca("Central")
 biblioteca.adicionar_livro(livro1)
 biblioteca.adicionar_leitor(leitor1)
-
-biblioteca.exibir_biblioteca()
+print(biblioteca)
