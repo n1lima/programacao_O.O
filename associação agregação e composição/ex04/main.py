@@ -13,7 +13,7 @@ capitulo = Capitulo(10, 'array')
 livro1 = Livro("Python para Iniciantes")
 leitor1 = Leitor("João")
 livro1.add_capitulos(capitulo)
-
+print(livro1)
 
 biblioteca = Biblioteca("Central")
 biblioteca.adicionar_livro(livro1)
