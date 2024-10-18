@@ -58,7 +58,7 @@ class Livro:
             print("não há livro para devolver")
 
     def __str__(self):
-        info = (f'Titulo: {self.titulo}\n'
+        info = (f'Titulo: {self.titulo}'
                 f'Autor: {self.autor}\n'
                 f'Quantidade: {self.quantidade}\n')
         if self.emprestado_para:
