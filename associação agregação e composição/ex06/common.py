@@ -1,3 +1,4 @@
+from typing import List
 
 class Pessoa:
     def __init__(self, nome: str, idade: int):
@@ -66,6 +67,24 @@ class Livro:
         else:
             info += (f'Não há nenhum livro emprestado!\n')
         return info
+    
+# class Biblioteca:
+#     def __init__(self, nome: str):
+#         self.nome = nome
+#         self.lista: List[Livro] = []
+
+#     def adicionar_livro(self, livro: Livro):
+#         self.lista += livro
+
+#     def remover_livro(self, titulo: str):
+#         self.lista -= titulo 
+
+#     def listar_livros(self):
+#         for livro in self.lista:
+#             print(livro)
+
+#     def emprestar_livro(self, titulo: str, pessoa: Pessoa):
+#         self.lista -= titulo
 
         
 
