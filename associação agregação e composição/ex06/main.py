@@ -1,11 +1,16 @@
 from common import *
 
-aluno = Aluno('nicoly', 19, '364746')
+estacionamento = Estacionamento('Estacione Aqui', 10)
 
-print(aluno)
+carro = Carro('EZ3989', 'Agile', 2012, 'Popular')
+print(carro)
+moto = Moto('AV7890', 'Honda', 2010, 160)
+print(moto)
 
-prof = Professor('Ferrauche', 49, 'Exatas')
+estacionamento.add_veiculo(carro)
+estacionamento.add_veiculo(moto)
 
-print(prof)
+estacionamento.listar_veiculos()
 
-livro = Livro
+estacionamento.remover_veiculo('AV7890')
+estacionamento.listar_veiculos()

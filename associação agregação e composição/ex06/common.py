@@ -1,90 +1,74 @@
 from typing import List
 
-class Pessoa:
-    def __init__(self, nome: str, idade: int):
+class Veiculo:
+    def __init__(self, placa: str, modelo: str, ano: int):
+        self.placa = placa
+        self.modelo = modelo
+        self.ano = ano
+
+    def __str__(self):
+        info = '--- Informações dos Veículos ---\n'
+        info += (f'Placa: {self.placa}\n'
+                f'Modelo: {self.modelo}\n'
+                f'Ano: {self.ano}\n')
+        return info
+    
+class Carro(Veiculo):
+    def __init__(self, placa: str, modelo: str, ano: int, tipo: str):
+        super().__init__(placa, modelo, ano)
+        self.tipo = tipo
+
+    def __str__(self):
+        info = super().__str__()
+        info += (f'Tipo: {self.tipo}\n')
+        return info 
+    
+class Moto(Veiculo):
+    def __init__(self, placa: str, modelo: str, ano: int, cilindrada: int):
+        super().__init__(placa, modelo, ano)
+        self.cilindrada = cilindrada
+
+    def __str__(self):
+        info = super().__str__()
+        info += (f'Cilindrada da Moto eh: {self.cilindrada}cm³\n')
+        return info
+    
+class Estacionamento:
+    def __init__(self, nome: str, vagas: int):
         self.nome = nome
-        self.__idade = idade
+        self.vagas = vagas
+        self.veiculos: List[Veiculo] = []
 
-    def get_idade(self):
-        return self.__idade
-    
-    def __str__(self):
-        info = (f'Nome: {self.nome}\n'
-                f'Idade: {self.get_idade()}\n')
-        return info
-    
-class Aluno(Pessoa):
-    def __init__(self, nome: str, idade: int, matricula: str):
-        super().__init__(nome, idade)
-        self.__matricula = matricula
-
-    def get_matricula(self):
-        return self.__matricula
-    
-    def __str__(self):
-        info = super().__str__()
-        info += (f'Matricula: {self.get_matricula()}\n')
-        return info
-    
-class Professor(Pessoa):
-    def __init__(self, nome: str, idade: int, departamento: str):
-        super().__init__(nome, idade)
-        self.departamento = departamento
-
-    def __str__(self):
-        info = super().__str__()
-        info += (f'Departamento: {self.departamento}\n')
-        return info
-
-class Livro:
-    def __init__(self, titulo: str, autor: str, quantidade: int, ):
-        self.titulo = titulo
-        self.autor = autor
-        self.quantidade = quantidade 
-        self.emprestado_para = None
-
-    def emprestado(self, pessoa:Pessoa):
-        if self.quantidade > 0:
-            self.emprestado_para = pessoa
-            self.quantidade -= 1
+    def add_veiculo(self, v: Veiculo):
+        if len(self.veiculos) < self.vagas:
+            self.veiculos.append(v)
         else:
-            print("empréstimo não pode ser feito")
+            print('Não há vagas o Suficiente')
 
-    def devolver(self):
-        if self.emprestado_para != None:
-            self.emprestado_para = None
-            self.quantidade += 1
-            print(f'Livro "{self.titulo}" foi devolvido.')
-        else:
-            print("não há livro para devolver")
-
-    def __str__(self):
-        info = (f'Titulo: {self.titulo}'
-                f'Autor: {self.autor}\n'
-                f'Quantidade: {self.quantidade}\n')
-        if self.emprestado_para:
-            info += (f'Livro "{self.titulo}" foi emprestado para {self.emprestado_para}\n')
-        else:
-            info += (f'Não há nenhum livro emprestado!\n')
-        return info
+    def remover_veiculo(self, placa: str):
+        try:
+            for veiculo in self.veiculos:
+                if veiculo.placa == placa:
+                    self.veiculos.remove(veiculo)
+                    print('Veiculo Removido\n')
+                    return 
+            print('Placa não encontrada\n')
+        except ValueError:
+            print('Erro ao tentar remover o veículo\n')
     
-# class Biblioteca:
-#     def __init__(self, nome: str):
-#         self.nome = nome
-#         self.lista: List[Livro] = []
+    def listar_veiculos(self):
+        if self.veiculos:
+            for e in self.veiculos:
+                print(f'Veiculos Disponiveis:\n {e}')
+        else:
+            print('Nenhum veículo no estacionamento.')
 
-#     def adicionar_livro(self, livro: Livro):
-#         self.lista += livro
-
-#     def remover_livro(self, titulo: str):
-#         self.lista -= titulo 
-
-#     def listar_livros(self):
-#         for livro in self.lista:
-#             print(livro)
-
-#     def emprestar_livro(self, titulo: str, pessoa: Pessoa):
-#         self.lista -= titulo
+    def vagas_disponiveis(self):
+        if self.vagas:
+            vagasLivres = self.vagas - len(self.veiculos)
+            return f'Vagas disponiveis: {vagasLivres}'
+        
+      
 
         
 
