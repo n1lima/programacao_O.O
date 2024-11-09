@@ -51,8 +51,8 @@ class Estacionamento:
                 if veiculo.placa == placa:
                     self.veiculos.remove(veiculo)
                     print('Veiculo Removido\n')
-                    return 
-            print('Placa não encontrada\n')
+                    return #Retorna ao metodo apos achar a placa no loop
+            print('Placa não encontrada\n') #caso não ache ele mostra essa mensagem
         except ValueError:
             print('Erro ao tentar remover o veículo\n')
     
